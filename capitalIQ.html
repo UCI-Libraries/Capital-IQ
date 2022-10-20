@@ -1,0 +1,180 @@
+<style type="text/css">
+    .clickedLink {
+      position: relative;
+      display: inline-block;
+      color: white;
+      background-color:lightgrey !important;
+    }
+    .tooltipClicked {
+      visibility: hidden;
+      width: 339px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 999;
+      bottom: 0%;
+      left: 160%;
+      margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .clickedLink .tooltipClicked::after {
+      content: "";
+      position: absolute;
+      top: 45%;
+      left: -1%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent #555 transparent transparent;
+    }
+    
+    .clickedLink:hover .tooltipClicked{
+      visibility: visible;
+      opacity: 1;
+    }
+    .btn { 
+      margin: 3px !important;
+    }
+    #linkList a {
+      padding: 0px 5px !important;
+      font-size: 1.4rem
+    }
+    .phdBlock { 
+      border:1px solid #ddd;
+      padding: 10px;
+      background-color: #f9f9f9;
+    }
+</style>
+<script type="text/javascript">
+    //Script for making call to link db and get JSON with which links have been clicked
+    function checkLinks() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var JSONresp = JSON.parse(this.responseText);
+          if(JSONresp.uciLib1 != null && JSONresp.uciLib1 != ""){
+            var uciLib1Link = document.getElementById("uciLib1");
+            uciLib1Link.href= "#";
+            uciLib1Link.classList.add('clickedLink');
+            uciLib1Link.setAttribute('aria-disabled', true);
+          }
+          if(JSONresp.uciLib2 != null && JSONresp.uciLib2 != ""){
+            var uciLib2Link = document.getElementById("uciLib2");
+            uciLib2Link.href= "#";
+            uciLib2Link.classList.add('clickedLink');
+            uciLib2Link.setAttribute('aria-disabled', true);
+          }
+          if(JSONresp.uciLib3 != null && JSONresp.uciLib3 != ""){
+            var uciLib3Link = document.getElementById("uciLib3");
+            uciLib3Link.href= "#";
+            uciLib3Link.classList.add('clickedLink');
+            uciLib3Link.setAttribute('aria-disabled', true);
+          }
+          if(JSONresp.uciLib4 != null && JSONresp.uciLib4 != ""){
+            var uciLib4Link = document.getElementById("uciLib4");
+            uciLib4Link.href= "#";
+            uciLib4Link.classList.add('clickedLink');
+            uciLib4Link.setAttribute('aria-disabled', true);
+          }
+          if(JSONresp.uciLib5 != null && JSONresp.uciLib5 != ""){
+            var uciLib5Link = document.getElementById("uciLib5");
+            uciLib5Link.href= "#";
+            uciLib5Link.classList.add('clickedLink');
+            uciLib5Link.setAttribute('aria-disabled', true);
+          }
+          if(JSONresp.uciLib6 != null && JSONresp.uciLib6 != ""){
+            var uciLib6Link = document.getElementById("uciLib6");
+            uciLib6Link.href= "#";
+            uciLib6Link.classList.add('clickedLink');
+            uciLib6Link.setAttribute('aria-disabled', true);
+          }
+          if(JSONresp.uciLib7 != null && JSONresp.uciLib7 != ""){
+            var uciLib7Link = document.getElementById("uciLib7");
+            uciLib7Link.href= "#";
+            uciLib7Link.classList.add('clickedLink');
+            uciLib7Link.setAttribute('aria-disabled', true);   
+          }
+          if(JSONresp.uciLib8 != null && JSONresp.uciLib8 != ""){
+            var uciLib8Link = document.getElementById("uciLib8");
+            uciLib8Link.href= "#";
+            uciLib8Link.classList.add('clickedLink');
+            uciLib8Link.setAttribute('aria-disabled', true);
+          }
+          if(JSONresp.uciLib9 != null && JSONresp.uciLib9 != ""){
+            var uciLib9Link = document.getElementById("uciLib9");
+            uciLib9Link.href= "#";
+            uciLib9Link.classList.add('clickedLink');
+            uciLib9Link.setAttribute('aria-disabled', true);
+          }
+          if(JSONresp.uciLib10 != null && JSONresp.uciLib10 != ""){
+            var uciLib10Link = document.getElementById("uciLib10");
+            uciLib10Link.href= "#";
+            uciLib10Link.classList.add('clickedLink');
+            uciLib10Link.setAttribute('aria-disabled', true);
+          }
+        }
+      };
+      xhttp.open("GET", "/capitalIQ.php",true);
+      xhttp.send();
+    }
+    //function to log link clicked to db
+    function logLink(username) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", "/sites/all/scripts/www/capiqApp/capiqJson.php?userLink="+username,true);
+      xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      xhttp.send();
+      checkLinks();
+      switch(username) {
+        case "uciLib1":
+          window.open('','_new').location.href='Insert Link URL here';
+          break;
+        case "uciLib2":
+          window.open('','_new').location.href='Insert Link URL here';
+          break;
+        case "uciLib3":
+          window.open('','_new').location.href='Insert Link URL here';
+          break;
+        case "uciLib4":
+          window.open('','_new').location.href='Insert Link URL here';
+          break;
+        case "uciLib5":
+          window.open('','_new').location.href='Insert Link URL here';
+          break;
+        case "uciLib6":
+          window.open('','_new').location.href='Insert Link URL here';
+          break;
+        case "uciLib7":
+          window.open('','_new').location.href='Insert Link URL here';
+          break;
+        case "uciLib8":
+          window.open('','_new').location.href='Insert Link URL here';
+          break;
+        case "uciLib9":
+          window.open('','_new').location.href='Insert Link URL here';
+          break;
+        case "uciLib10":
+          window.open('','_new').location.href='Insert Link URL here';
+          break;
+      }
+    }
+    window.onload = checkLinks();
+</script>
+
+<ul id="linkList">
+    <li><a class="btn btn-primary" href="javascript:void(0)" id="uciLib1" onclick="logLink('uciLib1')">UCI Libraries 1<span class="tooltipClicked">Another user clicked this link in the past 30min.</span></a></li>
+    <li><a class="btn btn-primary" href="javascript:void(0)" id="uciLib2" onclick="logLink('uciLib2')">UCI Libraries 2<span class="tooltipClicked">Another user clicked this link in the past 30min.</span></a></li>
+    <li><a class="btn btn-primary" href="javascript:void(0)" id="uciLib3" onclick="logLink('uciLib3')">UCI Libraries 3<span class="tooltipClicked">Another user clicked this link in the past 30min.</span></a></li>
+    <li><a class="btn btn-primary" href="javascript:void(0)" id="uciLib4" onclick="logLink('uciLib4')">UCI Libraries 4<span class="tooltipClicked">Another user clicked this link in the past 30min.</span></a></li>
+    <li><a class="btn btn-primary" href="javascript:void(0)" id="uciLib5" onclick="logLink('uciLib5')">UCI Libraries 5<span class="tooltipClicked">Another user clicked this link in the past 30min.</span></a></li>
+    <li><a class="btn btn-primary" href="javascript:void(0)" id="uciLib6" onclick="logLink('uciLib6')">UCI Libraries 6<span class="tooltipClicked">Another user clicked this link in the past 30min.</span></a></li>
+    <li><a class="btn btn-primary" href="javascript:void(0)" id="uciLib7" onclick="logLink('uciLib7')">UCI Libraries 7<span class="tooltipClicked">Another user clicked this link in the past 30min.</span></a></li>
+    <li><a class="btn btn-primary" href="javascript:void(0)" id="uciLib8" onclick="logLink('uciLib8')">UCI Libraries 8<span class="tooltipClicked">Another user clicked this link in the past 30min.</span></a></li>
+    <li><a class="btn btn-primary" href="javascript:void(0)" id="uciLib9" onclick="logLink('uciLib9')">UCI Libraries 9<span class="tooltipClicked">Another user clicked this link in the past 30min.</span></a></li>
+    <li><a class="btn btn-primary" href="javascript:void(0)" id="uciLib10" onclick="logLink('uciLib10')">UCI Libraries 10<span class="tooltipClicked">Another user clicked this link in the past 30min.</span></a></li>
+</ul>
+    
