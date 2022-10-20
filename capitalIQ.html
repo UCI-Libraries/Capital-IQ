@@ -125,7 +125,7 @@
     //function to log link clicked to db
     function logLink(username) {
       var xhttp = new XMLHttpRequest();
-      xhttp.open("POST", "/sites/all/scripts/www/capiqApp/capiqJson.php?userLink="+username,true);
+      xhttp.open("POST", "/capitalIQ.php?userLink="+username,true);
       xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
       xhttp.send();
       checkLinks();
